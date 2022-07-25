@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - sifon</title>
+
+    <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="page-index">
+
+    <header class="container-nav">
+        <aside>
+            <img class="random" src="assets/random.png" alt="Random">
+            <img class="bottom" src="assets/bottom.png" alt="Bottom">
+        </aside>
+        <nav>
+            <img class="nav-closed" src="assets/nav-closed.png" alt="Nav Open">
+            <img class="nav-open" src="assets/nav-open.png" alt="Nav Closed" style="display: none">
+        </nav>
+    </header>
+    <main>
+        <header>
+            <div class="container-logo">
+                <img class="logo" src="assets/logo.png" alt="Sifon Logo">
+            </div>
+        </header>
+        <div class="container-project-impressions">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="container-project">
+            <h1>Usinesonore</h1>
+            <p>I'm baby literally mixtape beard wolf brunch street art art party mlkshk shaman forage roof party skateboard put a bird on it butcher narwhal. Health goth before they sold out retro freegan bicycle rights pop-up plaid farm-to-table typewriter pug activated charcoal cronut next level. Sartorial kombucha raw denim hashtag hella. Wolf knausgaard cronut, everyday carry biodiesel lo-fi artisan pinterest austin vegan.</p>
+            <p>Hell of street art wayfarers, chicharrones bespoke truffaut cronut. Before they sold out brunch lo-fi bushwick pabst raw denim chambray health goth unicorn sustainable you probably haven't heard of them microdosing tofu vape. Lo-fi tattooed knausgaard disrupt iceland. Cronut mlkshk iPhone, unicorn yes plz meh vinyl cloud bread photo booth. Selfies aesthetic seitan, actually narwhal vexillologist shaman whatever shoreditch mustache biodiesel literally master cleanse salvia. Air plant prism vice next level vexillologist bushwick. Twee flannel williamsburg, freegan migas tote bag swag cronut.</p>
+            <div class="image-project-impression" style="background-image: url(https://source.unsplash.com/random/960x400?design)"></div>
+            <div class="image-project-impression" style="background-image: url(https://source.unsplash.com/random/960x400?tech)"></div>
+            <div class="image-project-impression" style="background-image: url(https://source.unsplash.com/random/960x400?animal)"></div>
+        </div>
+    </main>
+    <footer></footer>
+
+
+    <script>
+
+        let images = ['assets/temp/001.png', 'assets/temp/002.png', 'assets/temp/003.png', 'assets/temp/004.png', 'assets/temp/005.png', 'assets/temp/006.png', 'assets/temp/007.png', 'assets/temp/008.png'],
+            columns = document.querySelectorAll('.container-project-impressions > div'),
+            max_images = Math.floor(images.length / columns.length); /* images.length / columns.length */
+
+       let shuffled = images
+          .map(value => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value)
+
+        let column_index = -1,
+            leftovers = shuffled.length % columns.length;
+
+        while(shuffled.length) {
+            if(shuffled.length <= leftovers) {
+                column_index = Math.floor(Math.random() * columns.length);
+            } else {
+                column_index++;
+            }
+
+            let column = columns[column_index];
+
+            if(column.querySelectorAll('img').length <= max_images){
+                let image = document.createElement('img');
+                image.src = shuffled.pop();
+
+                column.appendChild(image);
+            }
+
+        }
+
+        for(c in columns){
+            let column = columns[c],
+                images = column.querySelectorAll('img');
+            if(images.length == 1){
+                images[0].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
+            } else {
+                for(let i = 1; i < images.length; i++){
+                    images[i].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
+                }
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>
