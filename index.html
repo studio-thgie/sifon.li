@@ -2,54 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - sifon</title>
 
     <link rel="stylesheet" href="assets/normalize.css">
+    <link rel="stylesheet" href="assets/fonts/tilde/stylesheet.css">
     <link rel="stylesheet" href="assets/styles.css">
+
+    <script>
+
+        let words =["The sky", "above", "the port","was", "the color of television", "tuned", "to", "a dead channel", ".", "All", "this happened", "more or less","." ,"I", "had", "the story", "bit by bit", "from various people", "and", "as generally", "happens", "in such cases", "each time", "it", "was", "a different story","." ,"It", "was", "a pleasure", "to", "burn"];
+        
+        function get_text() {
+            var text = [];
+            var x = Math.ceil(Math.random() * 25) + 25;
+            while(--x) text.push(words[Math.floor(Math.random() * words.length)]);
+            document.write(text.join(" ")+'.')
+        }
+
+    </script>
 </head>
 <body class="page-index">
 
+    <div class="container-logo">
+        <img class="logo" src="assets/svg/Sifon-Logo.svg" alt="Sifon Logo">
+    </div>
     <header class="container-nav">
-        <aside>
-            <img class="random" src="assets/random.png" alt="Random">
-            <img class="bottom" src="assets/bottom.png" alt="Bottom">
-        </aside>
         <nav>
-            <img class="nav-closed" src="assets/nav-closed.png" alt="Nav Open">
-            <img class="nav-open" src="assets/nav-open.png" alt="Nav Closed" style="display: none">
+            <img class="nav-closed" src="assets/svg/Burger.svg" alt="Navigation Open Icon">
+            <img class="nav-open" src="assets/svg/Close-Navigation.svg" alt="Navigation Close Icon" style="display: none">
         </nav>
+        <aside>
+            <img class="shuffle" src="assets/svg/Shuffle.svg" alt="Suffle">
+            <img class="page-down" src="assets/svg/Page-Down.svg" alt="Page Down">
+        </aside>
     </header>
     <main>
-        <header>
-            <div class="container-logo">
-                <img class="logo" src="assets/logo.png" alt="Sifon Logo">
-            </div>
-        </header>
         <div class="container-projects-list">
             <article class="container-project-preview">
-                <a href="page.html">
-                    <div class="image-project-preview" style="background-image: url(https://source.unsplash.com/random/960x400?design)"></div>
-                    <h2>Usinesonore</h2>
-                    <p>Mediation Dossier - How will Usinesonore be shown in the future</p>
+                <a href="001.html">
+                    <div class="image-project-preview">
+                        <img src="assets/temp/disruptive_perspectives-Web/Disruptive.gif" alt="Preview">
+                    </div>
+                    <h2>disruptive perspectives</h2>
+                    <p><script> get_text(); </script></p>
                 </a>
             </article>
             <article class="container-project-preview">
-                <a href="page.html">
-                    <div class="image-project-preview" style="background-image: url(https://source.unsplash.com/random/960x400?tech)"></div>
-                    <h2>Usinesonore</h2>
-                    <p>Mediation Dossier - How will Usinesonore be shown in the future</p>
+                <a href="002.html">
+                    <div class="image-project-preview">
+                        <img src="assets/temp/Les8-Web/les8.gif" alt="Preview">
+                    </div>
+                    <h2>Les8</h2>
+                    <p><script> get_text(); </script></p>
                 </a>
             </article>
             <article class="container-project-preview">
-                <a href="page.html">
-                    <div class="image-project-preview" style="background-image: url(https://source.unsplash.com/random/960x400?animal)"></div>
-                    <h2>Usinesonore</h2>
-                    <p>Mediation Dossier - How will Usinesonore be shown in the future</p>
+                <a href="003.html">
+                    <div class="image-project-preview">
+                        <img src="assets/temp/Nino-Bollag-Web/_MG_0183.jpeg" alt="Preview">
+                    </div>
+                    <h2>Nino Bollag</h2>
+                    <p><script> get_text(); </script></p>
+                </a>
+            </article>
+            <article class="container-project-preview">
+                <a href="004.html">
+                    <div class="image-project-preview">
+                        <img src="assets/temp/Pasquart-Web/_MG_0002.jpeg" alt="Preview">
+                    </div>
+                    <h2>Pasquart</h2>
+                    <p><script> get_text(); </script></p>
+                </a>
+            </article>
+            <article class="container-project-preview">
+                <a href="005.html">
+                    <div class="image-project-preview">
+                        <img src="assets/temp/X-Mas-Web/X-Mas.gif" alt="Preview">
+                    </div>
+                    <h2>X-Mas</h2>
+                    <p><script> get_text(); </script></p>
                 </a>
             </article>
         </div>
     </main>
-    <footer></footer>
+
+    <footer>
+    </footer>
     
 </body>
 </html>

@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-bold-webfont.woff2') format('woff2'),
+         url('tilde-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-bolditalic-webfont.woff2') format('woff2'),
+         url('tilde-bolditalic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-regular-webfont.woff2') format('woff2'),
+         url('tilde-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-italic-webfont.woff2') format('woff2'),
+         url('tilde-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-light-webfont.woff2') format('woff2'),
+         url('tilde-light-webfont.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tilde';
+    src: url('tilde-lightitalic-webfont.woff2') format('woff2'),
+         url('tilde-lightitalic-webfont.woff') format('woff');
+    font-weight: lighter;
+    font-style: italic;
+}

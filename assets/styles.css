@@ -1,5 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #FDFFD1;
+    font-family: 'Tilde', sans-serif;
 }
 
 /* ui */
@@ -11,7 +16,7 @@ body {
     width: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
 }
 .container-nav > * {
     flex-grow: 1;
@@ -43,6 +48,11 @@ body {
     max-width: 200px;
 }
 
+/* ui: buttons and icons */
+.shuffle {
+    margin-bottom: 1rem;
+}
+
 /* ui: index */
 .container-projects-list,
 .container-project {
@@ -53,15 +63,9 @@ body {
     margin-bottom: 8rem;
 }
 
-.image-project-preview,
-.image-project-impression {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    width: 100%;
-    height: 500px;
-
+.image-project-preview img,
+.image-project-impression img {
+    max-width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -90,6 +94,24 @@ p + .image-project-impression {
     margin-bottom: 2rem;
 }
 
+main {
+    padding: 0 2rem;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 2rem 3rem;
+    justify-content: space-between;
+}
+footer > * {
+    text-decoration: none;
+    font-weight: bold;
+}
+footer > *:hover {
+    text-decoration: underline;
+}
+
 /* typo */
 body, a {
     color: #0A23FB;
@@ -102,8 +124,57 @@ body, a {
 .container-project-preview h2 {
     margin: 0;
 }
+.container-project-preview p:first-letter {
+    text-transform: capitalize;
+}
 
 .container-project h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+/* 
+
+    Mobile Styles
+
+*/
+
+@media (max-width: 768px) {
+    .container-logo {
+        margin: 0;
+        padding: 4rem 2rem;
+    }
+    .logo {
+        width: 100%;
+        max-width: 480px;
+    }
+    .container-nav {
+        width: 100%;
+        position: static;
+        flex-direction: row;
+        padding: 2rem;
+    }
+    .container-nav > * {
+        display: flex;
+        width: 50%;
+        margin: 0;
+        flex-direction: row;
+    }
+    .container-nav nav {
+        margin-right: 0;
+    }
+    .container-nav > aside {
+        margin-left: 0;
+        flex-direction: row;
+        align-items: bottom;
+        justify-content: space-between;
+    }
+    .shuffle {
+        margin-bottom: 0;
+        transform: translateX(-50%);
+    }
+
+    .container-project-impressions {
+        display: none;
+    }
 }
