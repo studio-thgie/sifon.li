@@ -15,15 +15,23 @@
         <img class="logo" src="assets/svg/Sifon-Logo.svg" alt="Sifon Logo">
     </div>
     <header class="container-nav">
-        <nav>
+        <div class="nav-button">
             <img class="nav-closed" src="assets/svg/Burger.svg" alt="Navigation Open Icon">
-            <img class="nav-open" src="assets/svg/Close-Navigation.svg" alt="Navigation Close Icon" style="display: none">
-        </nav>
+            <img class="nav-open" src="assets/svg/Close-Navigation.svg" alt="Navigation Close Icon">
+        </div>
         <aside>
             <img class="shuffle" src="assets/svg/Shuffle.svg" alt="Suffle">
             <img class="page-down" src="assets/svg/Page-Down.svg" alt="Page Down">
         </aside>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </nav>
     <main>
         <div class="container-project-impressions">
             <div></div>
@@ -59,46 +67,8 @@
             columns = document.querySelectorAll('.container-project-impressions > div'),
             max_images = Math.floor(images.length / columns.length); /* images.length / columns.length */
 
-       let shuffled = images
-          .map(value => ({ value, sort: Math.random() }))
-          .sort((a, b) => a.sort - b.sort)
-          .map(({ value }) => value)
-
-        let column_index = -1,
-            leftovers = shuffled.length % columns.length;
-
-        while(shuffled.length) {
-            if(shuffled.length <= leftovers) {
-                column_index = Math.floor(Math.random() * columns.length);
-            } else {
-                column_index++;
-            }
-
-            let column = columns[column_index];
-
-            if(column.querySelectorAll('img').length <= max_images){
-                let image = document.createElement('img');
-                image.src = shuffled.pop();
-
-                column.appendChild(image);
-            }
-
-        }
-
-        for(c in columns){
-            let column = columns[c],
-                images = column.querySelectorAll('img');
-            if(images.length == 1){
-                images[0].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
-            } else {
-                for(let i = 1; i < images.length; i++){
-                    images[i].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
-                }
-            }
-        }
-
-
     </script>
+    <script src="assets/script.js"></script>
     
 </body>
 </html>
