@@ -1,53 +1,62 @@
-let words =["The sky", "above", "the port","was", "the color of television", "tuned", "to", "a dead channel", ".", "All", "this happened", "more or less","." ,"I", "had", "the story", "bit by bit", "from various people", "and", "as generally", "happens", "in such cases", "each time", "it", "was", "a different story","." ,"It", "was", "a pleasure", "to", "burn"];
-        
-function get_text() {
-    var text = [];
-    var x = Math.ceil(Math.random() * 25) + 25;
-    while(--x) text.push(words[Math.floor(Math.random() * words.length)]);
-    document.write(text.join(" ")+'.')
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.querySelector('.loading').classList.add('loaded');
+    }, 0);
+
     document.querySelector('.nav-button').addEventListener('click', (event) => {
+        window.scroll({top: 0, behavior: 'smooth'});
         event.target.parentNode.classList.toggle('open')
         document.querySelector('nav ul').classList.toggle('open')
     })
 
-    let shuffled = images
-        .map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
+    document.querySelector('.shuffle').addEventListener('click', () => {
+        window.location.reload();
+    })
 
-    let column_index = -1,
-        leftovers = shuffled.length % columns.length;
+    document.querySelector('.page-down').addEventListener('click', () => {
+        window.scroll({top: document.body.getBoundingClientRect().bottom, behavior: 'smooth'});
+    })
 
-    while(shuffled.length) {
-        if(shuffled.length <= leftovers) {
-            column_index = Math.floor(Math.random() * columns.length);
-        } else {
-            column_index++;
-        }
+    document.querySelector('.show-more').addEventListener('click', () => {
+        document.querySelector('.container-project .text').style.display = 'block';
+        document.querySelector('.show-more').style.display = 'none';
+    })
 
-        let column = columns[column_index];
+    if (typeof images != 'undefined') {
+        let shuffled = images.map(value => ({value, sort: Math.random()})).sort((a, b) => a.sort - b.sort).map(({value}) => value)
 
-        if(column.querySelectorAll('img').length <= max_images){
-            let image = document.createElement('img');
-            image.src = shuffled.pop();
+            let column_index = -1,
+                leftovers = shuffled.length % columns.length;
 
-            column.appendChild(image);
-        }
+            while (shuffled.length) {
+                if (shuffled.length <= leftovers) {
+                    column_index = Math.floor(Math.random() * columns.length);
+                } else {
+                    column_index++;
+                }
 
-    }
+                let column = columns[column_index];
 
-    for(c in columns){
-        let column = columns[c],
-            images = column.querySelectorAll('img');
-        if(images.length == 1){
-            images[0].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
-        } else {
-            for(let i = 1; i < images.length; i++){
-                images[i].style.marginTop = Math.floor(Math.random() * 15) + 1 + 'rem';
+                if (column.querySelectorAll('img').length <= max_images) {
+                    let image = document.createElement('img');
+                    image.src = shuffled.pop();
+
+                    column.appendChild(image);
+                }
+
+            }
+
+            for (c in columns) {
+                let column = columns[c],
+                    images = column.querySelectorAll('img');
+                if (images.length == 1) {
+                    images[0].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
+                } else {
+                    for (let i = 1; i < images.length; i++) {
+                        images[i].style.marginTop = Math.floor(Math.random() * 15) + 1 + 'rem';
+                    }
+                }
             }
         }
-    }
-})
+
+    })

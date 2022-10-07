@@ -1,0 +1,33 @@
+title: Project
+
+columns:
+  main:
+    width: 1/2
+    sections:
+      fields:
+        type: fields
+        fields:
+          lead:
+            type: textarea
+            size: medium
+          text:
+            type: textarea
+            size: large
+  sidebar:
+    width: 1/2
+    sections:
+      images:
+        type: fields 
+        fields:
+          cover:
+            type: files
+            multiple: false
+            layout: cards
+            image:
+              cover: true
+          gallery:
+            type: files
+            layout: cards
+            image:
+              cover: true
+

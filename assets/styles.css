@@ -7,6 +7,14 @@ body {
     font-family: 'Tilde', sans-serif;
 }
 
+button[type="button"] {
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
 /* ui */
 .container-nav {
     position: fixed;
@@ -26,8 +34,12 @@ body {
 .container-nav aside {
     display: flex;
     flex-direction: column;
+    align-items: start;
 
     margin-left: 4rem;
+}
+.container-nav .shuffle {
+    margin-bottom: 0.5rem;
 }
 .container-nav .nav-button {
     text-align: right;
@@ -48,13 +60,33 @@ body {
 }
 
 .container-logo {
+    position: relative;
     max-width: 960px;
     margin: 6rem auto;
+    z-index: 1;
 
     text-align: center;
 }
 .logo {
     max-width: 200px;
+}
+
+.loading {
+    pointer-events: none;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FDFFD1;
+
+    opacity: 1;
+    transition: opacity .5s;
+}
+.loading.loaded {
+    opacity: 0;
+    transition: opacity .5s;
 }
 
 /* ui: buttons and icons */
@@ -76,6 +108,22 @@ body {
 .image-project-impression img {
     max-width: 100%;
     margin-bottom: 1rem;
+
+    opacity: 1;
+    transition: opacity .25s;
+}
+
+.container-projects-masonry {
+    position: relative;
+}
+
+.container-projects-masonry .container-project-preview {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+}
+.image-project-preview img.disappeared {
+    opacity: 0;
 }
 
 /* ui: page */
@@ -84,7 +132,7 @@ body {
     gap: 10px;
 
     max-width: 960px;
-    margin: 8rem auto;
+    margin: 6rem auto;
 }
 .container-project-impressions > * {
     display: flex;
@@ -101,6 +149,15 @@ p + .image-project-impression {
 }
 .image-project-impression {
     margin-bottom: 2rem;
+}
+.show-more {
+    display: none;
+    width: 100%;
+    padding: 1rem !important;
+    text-align: center;
+}
+.show-more img {
+    width: 32px;
 }
 
 main {
@@ -131,7 +188,7 @@ body, a {
 }
 .container-project-preview p,
 .container-project-preview h2 {
-    margin: 0;
+    margin: 0 0 1rem;
 }
 .container-project-preview p:first-letter {
     text-transform: capitalize;
@@ -168,7 +225,7 @@ nav li:last-child {
 }
 nav a {
     display: block;
-    padding: 4px 0 8px;
+    padding: 8px 0;
     font-size: 2rem;
     text-decoration: none;
 
@@ -189,11 +246,11 @@ nav li:hover a {
 @media (max-width: 768px) {
     .container-logo {
         margin: 0;
-        padding: 4rem 2rem;
+        padding: 3rem 2rem;
     }
     .logo {
         width: 100%;
-        max-width: 480px;
+        max-height: 240px;
     }
     .container-nav {
         width: 100%;
@@ -212,9 +269,17 @@ nav li:hover a {
     }
     .container-nav > aside {
         margin-left: 0;
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: bottom;
         justify-content: space-between;
+    }
+    .container-nav .page-down {
+        position: relative;
+        left: -15px;
+    }
+    .container-nav .shuffle {
+        position: relative;
+        left: 15px;
     }
     nav ul.open {
         padding: 0 0 2rem;
@@ -224,7 +289,22 @@ nav li:hover a {
         transform: translateX(-50%);
     }
 
-    .container-project-impressions {
+    .container-project-preview {
+        margin-bottom: 1rem;
+    }
+    .container-project-impressions,
+    .project-lead {
+        display: none;
+    }
+
+    .image-project-impression {
+        margin-bottom: 1rem;
+    }
+
+    .show-more {
+        display: block;
+    }
+    .container-project .text {
         display: none;
     }
 }
