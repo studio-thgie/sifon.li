@@ -18,7 +18,5 @@ columns:
       pages:
         type: pages
         templates:
-          - home
-          - error
           - projects
           - default

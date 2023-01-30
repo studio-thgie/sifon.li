@@ -8,11 +8,14 @@ columns:
         type: fields
         fields:
           lead:
-            type: textarea
+            type: writer
             size: medium
           text:
-            type: textarea
+            type: writer
             size: large
+          video:
+            type: textarea
+            size: medium
   sidebar:
     width: 1/2
     sections:

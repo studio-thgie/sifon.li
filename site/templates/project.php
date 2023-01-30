@@ -1,6 +1,6 @@
 <?php snippet('header'); ?>
 
-    <main>
+    <main style="opacity: 0;">
         <div class="container-project-impressions">
             <div></div>
             <div></div>
@@ -15,18 +15,26 @@
             <?= $page->lead()->kt() ?>
 
             <button type="button" class="show-more">
-                <img src="" alt="Plus Icon">
+                <img src="/assets/svg/Plus.svg" alt="Plus Icon">
             </button>
 
             <div class="text">
                 <?= $page->text()->kt() ?>
             </div>
 
-            <?php $images = $page->gallery()->toFiles(); ?>
+            <?php if($page->video() != ''): ?>
+            <div class="video">
+                <?= $page->video()->kt() ?>
+            </div>
+            <?php endif; ?>
 
-            <?php foreach($images as $image): ?>
-                <div class="image-project-impression"><img src="<?= $image->thumb(['width' => 960, 'format' => 'webp'])->url() ?>"/></div>
-            <?php endforeach ?>
+            <div class="gallery">
+                <?php
+                    $images = $page->gallery()->toFiles();
+                    foreach($images as $image): ?>
+                    <div class="image-project-impression"><img id="<?= $image->contentFileName() ?>" src="<?= $image->thumb(['width' => 960, 'format' => 'webp'])->url() ?>"/></div>
+                <?php endforeach ?>
+            </div>
         </div>
     </main>
 
@@ -42,11 +50,12 @@
 
         let images = [
             <?php foreach($images as $image): ?>
-                '<?= $image->thumb(['width' => 200, 'format' => 'webp'])->url() ?>',
+                {
+                    id: '<?= $image->contentFileName() ?>',
+                    url: '<?= $image->thumb(['width' => 200, 'format' => 'webp'])->url() ?>'
+                },
             <?php endforeach ?>
-        ],
-            columns = document.querySelectorAll('.container-project-impressions > div'),
-            max_images = Math.floor(images.length / columns.length); /* images.length / columns.length */
+        ];
 
     </script>
     

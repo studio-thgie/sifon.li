@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-        document.querySelector('.loading').classList.add('loaded');
-    }, 0);
+        document.querySelector('main').classList.add('loaded');
+    }, 250);
 
     document.querySelector('.nav-button').addEventListener('click', (event) => {
         window.scroll({top: 0, behavior: 'smooth'});
@@ -17,38 +17,48 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scroll({top: document.body.getBoundingClientRect().bottom, behavior: 'smooth'});
     })
 
-    document.querySelector('.show-more').addEventListener('click', () => {
-        document.querySelector('.container-project .text').style.display = 'block';
-        document.querySelector('.show-more').style.display = 'none';
-    })
+    if (document.querySelector('.show-more')) {
+        document.querySelector('.show-more').addEventListener('click', () => {
+            document.querySelector('.container-project .text').style.display = 'block';
+            document.querySelector('.show-more').style.display = 'none';
+        })
+    }
 
     if (typeof images != 'undefined') {
-        let shuffled = images.map(value => ({value, sort: Math.random()})).sort((a, b) => a.sort - b.sort).map(({value}) => value)
+        let shuffled = images.map(value => ({value, sort: Math.random()})).sort((a, b) => a.sort - b.sort).map(({value}) => value),
+            columns = document.querySelectorAll('.container-project-impressions > div'),
+            max_images = Math.floor(images.length / columns.length); /* images.length / columns.length */
 
             let column_index = -1,
                 leftovers = shuffled.length % columns.length;
 
             while (shuffled.length) {
-                if (shuffled.length <= leftovers) {
-                    column_index = Math.floor(Math.random() * columns.length);
-                } else {
-                    column_index++;
-                }
+                column_index = Math.floor(Math.random() * columns.length);
+
+                console.log(column_index)
 
                 let column = columns[column_index];
 
                 if (column.querySelectorAll('img').length <= max_images) {
-                    let image = document.createElement('img');
-                    image.src = shuffled.pop();
+                    let image = document.createElement('img'),
+                        image_data = shuffled.pop();
+
+                    image.src = image_data.url;
+                    image.dataset.target = image_data.id;
 
                     column.appendChild(image);
+
+                    image.addEventListener('click', (event) => {
+                        let target = event.target.dataset.target;
+                        document.querySelector('[id="'+target+'"]').scrollIntoView({behavior: 'smooth'})
+                    })
                 }
 
             }
 
-            for (c in columns) {
-                let column = columns[c],
-                    images = column.querySelectorAll('img');
+            columns.forEach((column) => {
+                let images = column.querySelectorAll('img');
+
                 if (images.length == 1) {
                     images[0].style.marginTop = Math.floor(Math.random() * 15) + 'rem';
                 } else {
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         images[i].style.marginTop = Math.floor(Math.random() * 15) + 1 + 'rem';
                     }
                 }
-            }
+            })
         }
 
     })

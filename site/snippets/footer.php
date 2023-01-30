@@ -1,4 +1,3 @@
-  <div class="loading"></div>
 
   <?= js([
     'assets/script.js'

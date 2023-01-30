@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +19,12 @@
         <a href="<?= $site->url() ?>"><img class="logo" src="/assets/svg/Sifon-Logo.svg" alt="Sifon Logo"></a>
     </div>
     <header class="container-nav">
-        <button type="button" class="nav-button">
-            <img class="nav-closed" src="/assets/svg/Burger.svg" alt="Navigation Open Icon">
-            <img class="nav-open" src="/assets/svg/Close-Navigation.svg" alt="Navigation Close Icon">
-        </button>
+        <div>
+            <button type="button" class="nav-button">
+                <img class="nav-closed" src="/assets/svg/Burger.svg" alt="Navigation Open Icon">
+                <img class="nav-open" src="/assets/svg/Burger-Close.svg" alt="Navigation Close Icon">
+            </button>
+        </div>
         <aside>
             <button type="button" class="shuffle"><img src="/assets/svg/Shuffle.svg" alt="Suffle"></button>
             <button type="button" class="page-down"><img src="/assets/svg/Page-Down.svg" alt="Page Down"></button>
